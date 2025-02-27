@@ -641,98 +641,127 @@ body.loaded .loader {
 
 /* Portfolio Page Styles */
 .portfolio-hero {
-    min-height: 50vh;
+    padding: 120px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.portfolio-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(90deg, #64ffda, #00bcd4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.portfolio-hero .hero-subtitle {
+    font-size: 1.5rem;
+    color: #8892b0;
+    margin-bottom: 3rem;
+}
+
+/* Hero Stats */
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    margin-top: 3rem;
+}
+
+.stat {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    text-align: center;
-    padding: 120px 5% 60px;
-    background: linear-gradient(45deg, var(--primary-dark), #1a1a1a);
-}
-
-.sticky-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 2rem;
-}
-
-.sticky-note {
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.3s, box-shadow 0.3s;
-    position: relative;
-}
-
-.sticky-content {
-    background: linear-gradient(135deg, var(--primary-dark), var(--primary-pink));
     padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
     border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    transform: rotate(-1deg);
-    transition: transform 0.3s;
+    transition: transform 0.3s ease;
 }
 
-.sticky-note:nth-child(even) .sticky-content {
-    transform: rotate(1deg);
+.stat:hover {
+    transform: translateY(-5px);
 }
 
-.sticky-note:hover .sticky-content {
-    transform: rotate(0) scale(1.02);
-    box-shadow: 0 15px 30px rgba(224, 33, 138, 0.2);
+.stat .number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #64ffda, #00bcd4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 0.5rem;
 }
 
-.sticky-content img {
+.stat .label {
+    color: #8892b0;
+    font-size: 1rem;
+}
+
+/* Glow Animation */
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px rgba(100, 255, 218, 0.2),
+                     0 0 20px rgba(100, 255, 218, 0.2),
+                     0 0 30px rgba(100, 255, 218, 0.2);
+    }
+    to {
+        text-shadow: 0 0 20px rgba(100, 255, 218, 0.4),
+                     0 0 30px rgba(100, 255, 218, 0.4),
+                     0 0 40px rgba(100, 255, 218, 0.4);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .portfolio-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .portfolio-hero .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .hero-stats {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .stat {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+/* Background Animation and Geometric Shapes */
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 1rem;
+    height: 100%;
+    z-index: -2;
+    background: linear-gradient(45deg, #0a192f, #112240, #233554);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
 }
 
-.sticky-content h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: white;
+.geometric-shapes {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.1;
+    pointer-events: none;
 }
 
-.results {
-    color: var(--primary-pink);
-    font-weight: 600;
-    margin-bottom: 1rem;
-}
-
-.achievement-list {
-    list-style: none;
-    margin: 1rem 0;
-}
-
-.achievement-list li {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.achievement-list i {
-    color: var(--primary-pink);
-}
-
-.visit-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: white;
-    font-weight: 500;
-    margin-top: 1rem;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.sticky-note:hover .visit-link {
-    opacity: 1;
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* Pin Effect */
