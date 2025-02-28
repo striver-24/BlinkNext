@@ -186,13 +186,20 @@ nav {
     justify-content: center;
     align-items: center;
     z-index: 2000;
+    opacity: 1;
+    transition: opacity 0.3s ease-out;
+}
+
+.loader.hidden {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .eye {
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 60px;
     position: relative;
-    animation: blink 3s infinite;
+    animation: blink 2s infinite;
 }
 
 .eye-outer {
@@ -226,7 +233,7 @@ nav {
 
 @keyframes blink {
     0%, 100% { transform: scaleY(1); }
-    50% { transform: scaleY(0.1); }
+    45%, 55% { transform: scaleY(0.1); }
 }
 
 /* Services Page Specific Styles */
@@ -755,4 +762,11 @@ main {
     .tech-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-} 
+}
+
+window.addEventListener('load', () => {
+    const loader = document.querySelector('.loader');
+    loader.classList.add('hidden');
+    // Optional: Remove loader from DOM after fade out
+    setTimeout(() => loader.remove(), 300);
+}); 
