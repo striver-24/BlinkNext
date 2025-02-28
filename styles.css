@@ -763,10 +763,3 @@ main {
         grid-template-columns: repeat(2, 1fr);
     }
 }
-
-window.addEventListener('load', () => {
-    const loader = document.querySelector('.loader');
-    loader.classList.add('hidden');
-    // Optional: Remove loader from DOM after fade out
-    setTimeout(() => loader.remove(), 300);
-}); 

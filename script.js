@@ -115,12 +115,11 @@ document.querySelector('.newsletter-form')?.addEventListener('submit', (e) => {
     e.target.reset();
 });
 
-// Loading animation with delay
 window.addEventListener('load', () => {
-    // Simulate minimum loading time for effect
-    setTimeout(() => {
-        document.body.classList.add('loaded');
-    }, 2000); // 2 second minimum loading time
+    const loader = document.querySelector('.loader');
+    loader.classList.add('hidden');
+    // Optional: Remove loader from DOM after fade out
+    setTimeout(() => loader.remove(), 300);
 });
 
 // Optional: Add parallax effect to hero section
