@@ -208,4 +208,44 @@ const statsObserver = new IntersectionObserver((entries) => {
 // Observe elements that should trigger animations
 document.querySelectorAll('.stats-container').forEach(el => {
     statsObserver.observe(el);
+});
+
+// Mobile Menu Toggle
+const menuToggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+menuToggle?.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+// Navbar Scroll Effect
+const nav = document.querySelector('.glass-nav');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+        nav.classList.add('scrolled');
+    } else {
+        nav.classList.remove('scrolled');
+    }
+});
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-links') && !e.target.closest('.menu-toggle')) {
+        navLinks.classList.remove('active');
+    }
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth'
+            });
+            // Close mobile menu after clicking
+            navLinks.classList.remove('active');
+        }
+    });
 }); 
